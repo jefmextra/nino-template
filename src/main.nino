@@ -1,0 +1,27 @@
+// ==============================================================================
+// The Nino Programming Language — Standard Application Template
+// File: src/main.nino
+// ==============================================================================
+
+struct Config {
+    app_name: string,
+    version: string,
+    max_workers: i32
+}
+
+fn initialize_system(cfg: Config) {
+    require(cfg.max_workers > 0, "Worker pool count must be positive")
+    print("Initializing " + cfg.app_name + " [v" + cfg.version + "]...")
+    print("Worker threads allocated: {cfg.max_workers}")
+}
+
+fn main() {
+    let cfg = Config {
+        app_name: "Nino Enterprise Service",
+        version: "1.0.0",
+        max_workers: 8
+    }
+
+    initialize_system(cfg)
+    print("Service running nominally. Zero memory overhead.")
+}
